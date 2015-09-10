@@ -1,0 +1,39 @@
+{
+  "name": "react-data-table",
+  "version": "0.0.3",
+  "description": "A very simple DataTable component for React that takes data via ajax (made for Laravel paginate).",
+  "main": "/bundle/index.js",
+  "dependencies": {
+    "lodash.get": "^3.7.0",
+    "qs": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "webpack": "^1.12.1",
+    "babel-core": "^5.8.23",
+    "babel-loader": "^5.3.2"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "scripts": {
+    "build": "babel src --out-dir bundle --stage 0",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KodersLab/ReactDataTable.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component",
+    "react-data-table"
+  ],
+  "author": "KodersLab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KodersLab/ReactDataTable/issues"
+  },
+  "homepage": "https://github.com/KodersLab/ReactDataTable"
+}
