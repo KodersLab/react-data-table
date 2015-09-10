@@ -28,7 +28,7 @@ export default class Filtering extends React.Component {
 		return <thead>
 				<tr>
 					{this.props.columns.map(function(column, i) {
-						if(column.renderer){
+						if((column.renderer) || (!column.search)){
 							return <th key={i} style={{cursor:'not-allowed'}}></th>;
 						}
 						return <th style={styles.th} key={i}>

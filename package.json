@@ -1,6 +1,6 @@
 {
   "name": "react-data-table",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A very simple DataTable component for React that takes data via ajax (made for Laravel paginate).",
   "main": "/bundle/index.js",
   "dependencies": {
