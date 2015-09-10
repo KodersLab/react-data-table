@@ -8,7 +8,7 @@ npm install react-data-table
 ```
 
 ### Usage example
-```
+```jsx
 import React from 'react';
 import DataTable from 'react-data-table';
 
