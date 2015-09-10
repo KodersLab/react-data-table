@@ -61,7 +61,7 @@ var Filtering = (function (_React$Component) {
 					'tr',
 					null,
 					this.props.columns.map((function (column, i) {
-						if (column.renderer || !column.search) {
+						if (column.renderer || column.search === false) {
 							return _react2['default'].createElement('th', { key: i, style: { cursor: 'not-allowed' } });
 						}
 						return _react2['default'].createElement(
