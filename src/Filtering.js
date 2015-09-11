@@ -32,7 +32,7 @@ export default class Filtering extends React.Component {
 							return <th key={i} style={{cursor:'not-allowed'}}></th>;
 						}
 						return <th style={styles.th} key={i}>
-							<input style={styles.input} placeholder={(this.props.i18n.searchPlaceholderPrefix || 'Search for')+' '+(column.label.toLowerCase() || column.name)} onChange={this.onChange.bind(this,column)} type="text" />
+							<input style={styles.input} placeholder={(this.props.i18n.searchPlaceholderPrefix || 'Search for')+' '+(column.label.toLowerCase() || column.name)+'...'} onChange={this.onChange.bind(this,column)} type="text" />
 						</th>;
 					}.bind(this))}
 				</tr>
