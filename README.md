@@ -100,7 +100,7 @@ You can pass 3 props to react-data-table:
 
 ### Mutators
 
-Have you already had to add the currency symbol at a price arrived from your database? With a mutator you can do this!
+Have you ever had to add the currency symbol at a price arrived from your database? With a mutator you can do this!
 
 ```javascript
 {
