@@ -67,7 +67,7 @@ var Filtering = (function (_React$Component) {
 						return _react2['default'].createElement(
 							'th',
 							{ style: styles.th, key: i },
-							_react2['default'].createElement('input', { style: styles.input, onChange: this.onChange.bind(this, column), type: 'text' })
+							_react2['default'].createElement('input', { style: styles.input, placeholder: (this.props.i18n.searchPlaceholderPrefix || 'Search for') + ' ' + (column.label.toLowerCase() || column.name), onChange: this.onChange.bind(this, column), type: 'text' })
 						);
 					}).bind(this))
 				)
