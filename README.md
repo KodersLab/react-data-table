@@ -11,6 +11,7 @@ Warning! Docs are not 100% complete!
 - [Dependencies](#dependencies)
 - [Component props](#component-props)
 - [Mutators](#mutators)
+- [Renderers](#renderers)
   
 ### Installation
 ```
