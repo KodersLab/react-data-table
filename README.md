@@ -134,7 +134,7 @@ class ButtonRenderer extends React.Component {
 
 class ComputedRenderer extends React.Component {    
     render() {
-        return this.props.row.name+' costs only € '+this.props.row.price+'!';
+        return this.props.row.name+' it\'s only € '+this.props.row.price+'!';
     }
 }
 
