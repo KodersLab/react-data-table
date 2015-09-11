@@ -4,8 +4,7 @@ import Body from './Body';
 import Foot from './Foot';
 import Filtering from './Filtering';
 import Pagination from './Pagination';
-
-import {HTTP} from './utils';
+import superagent from 'superagent';
 
 export default class DataTable extends React.Component {
 
@@ -59,7 +58,7 @@ export default class DataTable extends React.Component {
       url += (filters[key] !== '') ? (url.indexOf('?') > -1 ? '&' : '?')+'filters['+key+']='+filters[key] : '';
     });
 
-    HTTP.get(url).then(function(results){
+    superagent.get(url).end(function(err, results){
       if(!results.data && Array.isArray(results.data)){
         throw new Error("No data found, check your rest server.")
       }
