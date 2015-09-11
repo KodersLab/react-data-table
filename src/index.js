@@ -4,7 +4,7 @@ import Body from './Body';
 import Foot from './Foot';
 import Filtering from './Filtering';
 import Pagination from './Pagination';
-import superagent from 'superagent';
+import request from 'superagent';
 
 export default class DataTable extends React.Component {
 
@@ -57,22 +57,24 @@ export default class DataTable extends React.Component {
     Object.keys(filters).forEach((key) => {
       url += (filters[key] !== '') ? (url.indexOf('?') > -1 ? '&' : '?')+'filters['+key+']='+filters[key] : '';
     });
-
-    superagent.get(url).end(function(err, results){
-      if(!results.data && Array.isArray(results.data)){
+    
+    request('GET',url).end(function(err, res){
+      if(!res.ok){
+        throw new Error("Error while requesting data, check your rest server.")
+      }
+      if(!res.body && Array.isArray(res.body)){
         throw new Error("No data found, check your rest server.")
       }
-      if((results.current_page === null) || (results.last_page === null) || (results.from === null) || (results.to === null) || (results.total === null)){
-        console.log(results)
+      if((res.body.current_page === null) || (res.body.last_page === null) || (res.body.from === null) || (res.body.to === null) || (res.body.total === null)){
         throw new Error("Error with paging data, check your rest server.")
       }
       this.setState({
-        data: results.data,
-        currentPage: results.current_page,
-        lastPage: results.last_page,
-        fromRow: results.from,
-        toRow: results.to,
-        totalRows: results.total
+        data: res.body.data,
+        currentPage: res.body.current_page,
+        lastPage: res.body.last_page,
+        fromRow: res.body.from,
+        toRow: res.body.to,
+        totalRows: res.body.total
       });
     }.bind(this));
   }

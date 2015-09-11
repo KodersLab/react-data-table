@@ -38,7 +38,9 @@ var _Pagination = require('./Pagination');
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _utils = require('./utils');
+var _superagent = require('superagent');
+
+var _superagent2 = _interopRequireDefault(_superagent);
 
 var DataTable = (function (_React$Component) {
   _inherits(DataTable, _React$Component);
@@ -102,21 +104,23 @@ var DataTable = (function (_React$Component) {
         url += filters[key] !== '' ? (url.indexOf('?') > -1 ? '&' : '?') + 'filters[' + key + ']=' + filters[key] : '';
       });
 
-      _utils.HTTP.get(url).then((function (results) {
-        if (!results.data && Array.isArray(results.data)) {
+      (0, _superagent2['default'])('GET', url).end((function (err, res) {
+        if (!res.ok) {
+          throw new Error("Error while requesting data, check your rest server.");
+        }
+        if (!res.body && Array.isArray(res.body)) {
           throw new Error("No data found, check your rest server.");
         }
-        if (results.current_page === null || results.last_page === null || results.from === null || results.to === null || results.total === null) {
-          console.log(results);
+        if (res.body.current_page === null || res.body.last_page === null || res.body.from === null || res.body.to === null || res.body.total === null) {
           throw new Error("Error with paging data, check your rest server.");
         }
         this.setState({
-          data: results.data,
-          currentPage: results.current_page,
-          lastPage: results.last_page,
-          fromRow: results.from,
-          toRow: results.to,
-          totalRows: results.total
+          data: res.body.data,
+          currentPage: res.body.current_page,
+          lastPage: res.body.last_page,
+          fromRow: res.body.from,
+          toRow: res.body.to,
+          totalRows: res.body.total
         });
       }).bind(this));
     }
